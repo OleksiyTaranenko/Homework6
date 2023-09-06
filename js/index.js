@@ -4,50 +4,53 @@ function story() {
         name: 'Kolobok',
         age: 0.003, //1 day
         characteristic: 'nimble',
+        isAlive: Boolean,
         becameAlive: function() {
-            console.log(`${kolobok.name} became alive`);
+            this.isAlive = true;
+            console.log(`${this.name} became alive`);
         },        
         say: function(phrase) {
-            console.log(`${kolobok.name} says: ` + phrase);
+            console.log(`${this.name} says: ` + phrase);
         },
         tiredOfRoutine: function() {
-            console.log(`${kolobok.name} tired of routine and decided to explore the world`);
+            console.log(`${this.name} tired of routine and decided to explore the world`);
         },
         leftHome: function() {
-            console.log(`${kolobok.name} left home`);
+            console.log(`${this.name} left home`);
         },
         roll: function() {
-            console.log(`${kolobok.name} is rolling down the road`);
+            console.log(`${this.name} is rolling down the road`);
         },
-        meetRabbit: function() {
-            console.log(`${kolobok.name} meets ${rabbit.name} on the road`);
+        meetRabbit: function(name) {
+            console.log(`${this.name} meets ${name} on the road`);
         },
-        leftRabbit: function() {
-            console.log(`${kolobok.name} left ${rabbit.name} and continue his journey`);
+        leftRabbit: function(name) {
+            console.log(`${this.name} left ${name} and continue his journey`);
         },
         sing: function(song) {    
-            console.log(`${kolobok.name} sings: "I\'m ${kolobok.name}, ${kolobok.name},\nI was made in suseki,\nI was made from selected dough,\nA glass of sour cream in me,\nA spoon of sunflower oil in me,\nI was lying on the windowsill,\nThen I left ${grandFa.characteristic} Grandfather,\nAnd I left ${grandMa.characteristic} Grandmother,` + song + '\nSo I can easily to leave you too!"');
+            console.log(`${this.name} sings: "I\'m ${this.name}, ${this.name},\nI was made in suseki,\nI was made from selected dough,\nA glass of sour cream in me,\nA spoon of sunflower oil in me,\nI was lying on the windowsill,\nThen I left Grandfather,\nAnd I left Grandmother,` + song + '\nSo I can easily to leave you too!"');
         },         
-        meetWolf: function() {
-            console.log(`${kolobok.name} meets ${wolf.name} on the road`);
+        meetWolf: function(name) {
+            console.log(`${this.name} meets ${name} on the road`);
         },        
-        leftWolf: function() {
-            console.log(`${kolobok.name} left ${wolf.name} and continue his journey`);
+        leftWolf: function(name) {
+            console.log(`${this.name} left ${name} and continue his journey`);
         },
-        meetBear: function() {
-            console.log(`${kolobok.name} meets ${bear.name} on the road`);
+        meetBear: function(name) {
+            console.log(`${this.name} meets ${name} on the road`);
         },        
-        leftBear: function() {
-            console.log(`${kolobok.name} left ${bear.name} and continue his journey`);
+        leftBear: function(name) {
+            console.log(`${this.name} left ${name} and continue his journey`);
         },
-        meetFox: function() {
-            console.log(`${kolobok.name} meets ${fox.name} on the road`);
+        meetFox: function(name) {
+            console.log(`${this.name} meets ${name} on the road`);
         },
-        sitOnFoxNose: function() {
-            console.log(`${kolobok.name} sits on ${fox.name} nose`);
+        sitOnFoxNose: function(name) {
+            console.log(`${this.name} sits on ${name} nose`);
         },
-        died: function() {
-            console.log(`${kolobok.name} died after being eaten by ${fox.characteristic} ${fox.name}...`);
+        died: function(character, name) {
+            this.isAlive = false;
+            console.log(`${this.name} died after being eaten by ${character} ${name}...`);
         }, 
     };   
 
@@ -86,10 +89,10 @@ function story() {
         age: undefined,
         characteristic: 'silly',
         say: function(phrase) {
-            console.log(`${rabbit.name} ` + phrase);
+            console.log(`${this.name} ` + phrase);
         },
         lostOrientation: function() {
-            console.log(`${rabbit.name} lost orientation`);
+            console.log(`${this.name} lost orientation`);
         },
         
     };
@@ -99,10 +102,10 @@ function story() {
         age: undefined,
         characteristic: 'angry',
         say: function(phrase) {
-            console.log(`${wolf.name} says: ` + phrase);
+            console.log(`${this.name} says: ` + phrase);
         },
         lostMind: function() {
-            console.log(`${wolf.name} lost his mind for a while`);
+            console.log(`${this.name} lost his mind for a while`);
         },
     };
 
@@ -111,10 +114,10 @@ function story() {
         age: undefined,
         characteristic: 'voracious',
         say: function(phrase) {
-            console.log(`${bear.name} says: ` + phrase);
+            console.log(`${this.name} says: ` + phrase);
         },
         shocked: function() {
-            console.log(`${bear.name} was shocked`);
+            console.log(`${this.name} was shocked`);
         },
     };
 
@@ -123,10 +126,10 @@ function story() {
         age: undefined,
         characteristic: 'sly',
         say: function(phrase) {
-            console.log(`${fox.name} says: ` + phrase);
+            console.log(`${this.name} says: ` + phrase);
         },
-        swallowKolobok: function() {
-            console.log(`${fox.name} swallows ${kolobok.name} at the moment he starts to sing his song for the second time`);
+        swallowKolobok: function(name) {
+            console.log(`${this.name} swallows ${name} at the moment he starts to sing his song for the second time`);
         },        
     };
 
@@ -203,47 +206,47 @@ function chapter1(kolobok, grandFa, grandMa) {
 
 function chapter2(kolobok, rabbit) {
     console.log('C H A P T E R : 2');  
-    kolobok.meetRabbit();
+    kolobok.meetRabbit(rabbit.name);
     rabbit.say(`"Hey, ${kolobok.name}, ${kolobok.name}, I am going to eat you!"`);
     kolobok.say(`"Please don\'t eat me, dear ${rabbit.name}, I wanna sing a song for you!"`);
     kolobok.sing('');
     rabbit.lostOrientation();       
-    kolobok.leftRabbit();       
+    kolobok.leftRabbit(rabbit.name);       
     kolobok.roll();       
 }
 
 function chapter3(kolobok, wolf) {
     console.log('C H A P T E R : 3');  
-    kolobok.meetWolf();
+    kolobok.meetWolf(wolf.name);
     wolf.say(`"Hrrr, ${kolobok.name}, ${kolobok.name}, I want to eat you now!"`);
     kolobok.say(`"Please don\'t eat me, ${wolf.characteristic} ${wolf.name}, better listen my song!"`);
     kolobok.sing(`\nAnd I left silly Rabbit before,`);
     wolf.lostMind();   
-    kolobok.leftWolf();       
+    kolobok.leftWolf(wolf.name);       
     kolobok.roll();        
 }
 
 function chapter4(kolobok, bear) {
     console.log('C H A P T E R : 4');  
-    kolobok.meetBear();
+    kolobok.meetBear(bear.name);
     bear.say(`"${kolobok.name}, ${kolobok.name}, let\'s talk about my dinner today, sit on my lap and I will eat you!"`);
     kolobok.say(`"Oh don\'t eat me, ${bear.characteristic} ${bear.name}, I prepared a beautiful song for you, please listen!"`);
     kolobok.sing('\nAnd I left silly Rabbit,\nAlso I left angry Wolf before,');
     bear.shocked();  
-    kolobok.leftBear();       
+    kolobok.leftBear(bear.name);       
     kolobok.roll();        
 }
 
 function chapter5(kolobok, fox) {
     console.log('C H A P T E R : 5');  
-    kolobok.meetFox();
+    kolobok.meetFox(fox.name);
     fox.say(`"Wow ${kolobok.name}, ${kolobok.name}, you are so cute and appetizing. Can I taste just a little piece of you?"`);
     kolobok.say(`"No, of course don\'t eat me, ${fox.characteristic} ${fox.name}, better listen my cute and long song!"`);
     kolobok.sing('\nAnd I left silly Rabbit,\nAlso I left angry Wolf before,\nAnd I left big Bear just an hour ago,');
     fox.say(`"It is so wonderful song, ${kolobok.name}, but I should tell you that I have hearing problems,\nso can you please sit on my nose and sing it again?"`);
     kolobok.say(`"No problems, ${fox.name}, I can do it."`);
-    kolobok.sitOnFoxNose();
-    fox.swallowKolobok();
-    kolobok.died();
+    kolobok.sitOnFoxNose(fox.name);
+    fox.swallowKolobok(kolobok.name);
+    kolobok.died(fox.characteristic, fox.name);
     console.log('T H E  E N D');     
 };
